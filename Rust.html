@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+
+  <title>Rust</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="Rust_files/reveal.css">
+  <link rel="stylesheet" href="Rust_files/default.css" id="theme">
+  <link rel="stylesheet" href="Rust_files/zenburn.css">
+  <script>
+  document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script><link rel="stylesheet" href="Rust_files/paper.css" type="text/css" media="print">
+
+  <!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+</head>
+
+<body style="transition: -moz-transform 0.8s ease 0s;">
+
+<div data-background-transition="default" data-transition-speed="default" class="reveal default center">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div style="width: 960px; height: 700px; transform: translate(-50%, -50%) scale(0.813857) translate(50%, 50%);" class="slides">
+    <section class="past" style="top: -101.5px; display: block;" hidden="">
+      <img style="background:#eee" src="Rust_files/rust.png">
+      <p>
+      <small>Speaker : Sumantro Mukherjee</small>
+      </p>
+    </section>
+
+    <section class="past" style="top: -296.5px; display: block;" hidden="">
+      <h2>Mozilla</h2>
+      <img src="Rust_files/firefox-logo.jpg" width="400">
+    </section>
+
+    <section data-previous-indexv="0" class="stack past" style="top: 0px; display: block;" hidden="">
+      <section class="" style="top: -259.5px; display: block;">
+        <h2>What is Rust?</h2>
+        <p>
+         Rust is a systems programming language that runs blazingly fast, prevents
+        almost all crashes, and eliminates data races.
+        </p>
+
+        <pre class="rust" style="margin-top:80px"><code data-trim="" style="font-size:150%;line-height:1.3em" class="rust"><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+  println!(<span class="string">"hello, {}"</span>, <span class="string">"world!"</span>);
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20println%21%28%22hello%2C%20%7B%7D%22%2C%20%22world%21%22%29%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -237px; display: block;" class="future" hidden="">
+        <h2>Why Rust?</h2>
+
+        <table style="margin:auto">
+          <tbody><tr>
+            <td style="">C/C++</td>
+            <td style="text-align:center"></td>
+            <td style="text-align:center">Java</td>
+            <td style="text-align:right">Python</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+            <div style="background:linear-gradient(to right, #d00, #00d);
+                    width:600px; height: 20px;margin:auto;
+                    border-radius:5px;">
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-size:80%">
+              More control,<br>less safety
+            </td>
+            <td colspan="2" style="text-align:right;font-size:80%">
+              Less control,<br>more safety
+            </td>
+          </tr>
+        </tbody></table>
+
+        <div style="background:green;margin:auto;width:400px;margin-top:50px;
+                    border-radius:5px;padding:5px;">
+          Rust
+          <p style="font-size:80%">
+            More control, more safety
+          </p>
+        </div>
+      </section>
+
+      <section style="top: -170.5px; display: block;" class="future" hidden="">
+        <h2>Systems Programming Language</h2>
+
+        <ul>
+          <li>Fine grained control over allocations</li>
+          <li>No required garbage collector</li>
+          <li>Minimal runtime</li>
+          <li>"Close to the metal"</li>
+        </ul>
+      </section>
+
+      <section style="top: -170.5px; display: block;" class="future" hidden="">
+        <h2>Runs blazingly fast</h2>
+
+        <ul>
+          <li>Compiles to an executable binary</li>
+          <li>LLVM backend</li>
+          <li>LLVM's suite of optimizations</li>
+          <li>Competitive with C/C++</li>
+        </ul>
+      </section>
+
+      <section style="top: -20px; display: none;" class="future" hidden="">
+        <h2>Prevents almost all crashes</h2>
+
+        <ul>
+          <li><em>Safe by default</em></li>
+          <li>Sophisticated type system and analysis</li>
+          <li>No segfaults</li>
+          <li>No null pointers</li>
+          <li>No dangling pointers</li>
+        </ul>
+      </section>
+
+      <section style="top: -20px; display: none;" class="future" hidden="">
+        <h2>Eliminates data races</h2>
+
+        <ul>
+          <li><em>Ownership</em> guarantees</li>
+          <li><em>Borrowing</em> prevents dangling pointers</li>
+          <li>Strong, safe abstractions</li>
+        </ul>
+      </section>
+    </section>
+
+    <section data-previous-indexv="0" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="" style="top: -84px; display: none;">
+        <h2>Who's using Rust?</h2>
+      </section>
+
+      <section style="top: -197px; display: none;" class="future" hidden="">
+        <h2>Rust is using Rust!</h2>
+
+        <p>Makeup of code in the Rust repository</p>
+        <ul>
+          <li><strong>92</strong>% Rust</li>
+          <li>3.6% C (bundled libraries)</li>
+          <li>1.6% shell scripts</li>
+          <li>3.0% other</li>
+        </ul>
+      </section>
+
+      <section style="top: -322px; display: none;" class="future" hidden="">
+        <h2>Servo</h2>
+
+        <p>
+          Parallel layout engine written in Rust pushing layout to new
+          boundaries
+        </p>
+
+        <img src="Rust_files/CsLkgLl.png" width="300">
+        <img src="Rust_files/B34-C_MCYAESU8t.jpg" width="250">
+      </section>
+    </section>
+
+    <section data-previous-indexv="0" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="" style="top: -164px; display: none;">
+        <h2>Ownership</h2>
+
+        <p>Variables are <em>moved</em> to new locations, preventing the
+        previous location from using it</p>
+
+        <p style="margin-top:20px">There is only every <em>one</em> owner of data!
+      </p></section>
+
+      <section style="top: -350px; display: none;" class="future" hidden="">
+        <h2>Ownership</h2>
+
+        <pre><code class="perl" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">int</span> main() {
+    <span class="keyword">int</span> <span class="variable">*slot</span> = malloc(sizeof(<span class="keyword">int</span>));
+    <span class="variable">*slot</span> = <span class="number">3</span>;
+    helper(slot);
+    helper(slot); <span class="regexp">//</span> <span class="keyword">use</span> after free!
+}
+
+void helper(<span class="keyword">int</span> <span class="variable">*slot</span>) {
+    <span class="keyword">printf</span>(<span class="string">"The number was: <span class="variable">%d</span>\n"</span>, <span class="variable">*slot</span>);
+    free(slot);
+}</code></pre>
+        <pre><code class="nix delphi">
+a.<span class="keyword">out</span>(<span class="number">62940</span>,<span class="number">0</span>x7fff7b9ea310) malloc: *** error <span class="keyword">for</span> <span class="keyword">object</span> <span class="number">0</span>x7fecb0c03b10:
+pointer being freed was <span class="keyword">not</span> allocated
+*** <span class="keyword">set</span> a breakpoint <span class="keyword">in</span> malloc_error_break <span class="keyword">to</span> debug
+zsh: abort      ./a.<span class="keyword">out</span>
+</code></pre>
+      </section>
+
+      <section style="top: -350px; display: none;" class="future" hidden="">
+        <h2>Ownership</h2>
+
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> slot = box <span class="number">3</span>;
+    helper(slot); <span class="comment">// moves the value!</span>
+    helper(slot); <span class="comment">// error: use of moved value</span>
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">helper</span>(</span>slot: Box&lt;<span class="keyword">int</span>&gt;) {
+    println!(<span class="string">"The number was: {}"</span>, slot);
+}</code></pre>
+        <pre><code class="nix coffeescript">
+foo.<span class="attribute">rs</span>:<span class="number">4</span>:<span class="number">12</span>: <span class="number">4</span>:<span class="number">16</span> <span class="attribute">error</span>: use <span class="keyword">of</span> moved <span class="attribute">value</span>: `<span class="javascript">slot</span>`
+foo.<span class="attribute">rs</span>:<span class="number">4</span>     helper(slot);
+                    ^~~~
+foo.<span class="attribute">rs</span>:<span class="number">3</span>:<span class="number">12</span>: <span class="number">3</span>:<span class="number">16</span> <span class="attribute">note</span>: `<span class="javascript">slot</span>` moved here because it has type `<span class="javascript">Box&lt;int&gt;</span>`
+foo.<span class="attribute">rs</span>:<span class="number">3</span>     helper(slot);
+                    ^~~~
+<span class="attribute">error</span>: aborting due to previous error
+</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20slot%20%3D%20box%203%3B%0A%20%20%20%20helper%28slot%29%3B%20%2F%2F%20moves%20the%20value%21%0A%20%20%20%20helper%28slot%29%3B%20%2F%2F%20error%3A%20use%20of%20moved%20value%0A%7D%0A%0Afn%20helper%28slot%3A%20Box%3Cint%3E%29%20%7B%0A%20%20%20%20println%21%28%22The%20number%20was%3A%20%7B%7D%22%2C%20slot%29%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -280.5px; display: none;" class="future" hidden="">
+        <h2>Ownership</h2>
+
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="function"><span class="keyword">fn</span> <span class="title">helper</span>(</span>) -&gt; Box&lt;<span class="keyword">int</span>&gt; {
+    <span class="keyword">let</span> three = box <span class="number">3</span>;
+    <span class="keyword">return</span> three; <span class="comment">// transfer ownership</span>
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="comment">// acquire ownership of return value</span>
+    <span class="keyword">let</span> my_three = helper();
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20helper%28%29%20-%3E%20Box%3Cint%3E%20%7B%0A%20%20%20%20let%20three%20%3D%20box%203%3B%0A%20%20%20%20return%20three%3B%20%2F%2F%20transfer%20ownership%0A%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20%2F%2F%20acquire%20ownership%20of%20return%20value%0A%20%20%20%20let%20my_three%20%3D%20helper%28%29%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -20px; display: none;" class="future" hidden="">
+        <h2>Ownership</h2>
+
+        <p>Ownership is a <em>deep</em> property of a type</p>
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="keyword">struct</span> A { b: B }
+<span class="keyword">struct</span> B { c: Box&lt;<span class="keyword">int</span>&gt; }
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> a: A = A { b: B { c: box <span class="number">2</span> } };
+    <span class="keyword">let</span> c = a.b.c;
+
+    <span class="keyword">let</span> b: B = a.b; <span class="comment">// error! (moved by `c`)</span>
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Astruct%20A%20%7B%20b%3A%20B%20%7D%0Astruct%20B%20%7B%20c%3A%20Box%3Cint%3E%20%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20a%3A%20A%20%3D%20A%20%7B%20b%3A%20B%20%7B%20c%3A%20box%202%20%7D%20%7D%3B%0A%20%20%20%20let%20c%20%3D%20a.b.c%3B%0A%0A%20%20%20%20let%20b%3A%20B%20%3D%20a.b%3B%20%2F%2F%20error%21%20%28moved%20by%20%60c%60%29%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="5" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="past" style="top: -349px; display: none;" hidden="">
+        <h2>Borrowing</h2>
+
+        <p>
+          Owned values can be <em>borrowed</em> in Rust to allow usage for a
+          certain period of time.
+        </p>
+
+        <pre><code class="rust" data-trim="" style="font-size:140%;line-height:1.3em"><span class="comment">// The `&amp;` sigil means "borrowed reference"</span>
+<span class="function"><span class="keyword">fn</span> <span class="title">helper</span>(</span>slot: &amp;Vec&lt;<span class="keyword">int</span>&gt;) { <span class="comment">/* ... */</span> }
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> a = Vec::new();
+
+    <span class="comment">// doesn't move!</span>
+    helper(&amp;a);
+    helper(&amp;a);
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0A%2F%2F%20The%20%60%26%60%20sigil%20means%20%22borrowed%20reference%22%0Afn%20helper%28slot%3A%20%26Vec%3Cint%3E%29%20%7B%20%2F*%20...%20*%2F%20%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20a%20%3D%20Vec%3A%3Anew%28%29%3B%0A%0A%20%20%20%20%2F%2F%20doesn%27t%20move%21%0A%20%20%20%20helper%28%26a%29%3B%0A%20%20%20%20helper%28%26a%29%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -282.5px; display: none;" class="past" hidden="">
+        <h2>Borrowing</h2>
+
+        <p>
+          Borrowed values are only valid for a particular <em>lifetime</em>
+        </p>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:140%;line-height:1.3em"><span class="keyword">let</span> a: &amp;<span class="keyword">int</span>;
+{
+    <span class="keyword">let</span> b = <span class="number">3</span>;
+    a = &amp;b; <span class="comment">// error! `b` does not live long enough</span>
+}</code></pre>
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:140%;line-height:1.3em"><span class="keyword">let</span> a: &amp;<span class="keyword">int</span>;
+<span class="keyword">let</span> b = <span class="number">3</span>;
+a = &amp;b; <span class="comment">// ok, `b` has the same lifetime as `a`</span></code></pre>
+      </section>
+
+      <section style="top: -282.5px; display: none;" class="past" hidden="">
+        <h2>Borrowing</h2>
+
+        <p>
+          Borrowing prevents <em>moving</em>
+        </p>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:140%;line-height:1.3em"><span class="keyword">let</span> a = Vec::new();
+<span class="keyword">let</span> b = &amp;a;
+work_with(a); <span class="comment">// error!</span></code></pre>
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:140%;line-height:1.3em"><span class="keyword">let</span> a = Vec::new();
+{
+    <span class="keyword">let</span> b = &amp;a;
+}
+work_with(a); <span class="comment">// ok</span></code></pre>
+      </section>
+
+      <section style="top: -291.5px; display: none;" class="past" hidden="">
+        <h2>Borrowing</h2>
+
+        A common mistake in C:
+        <pre><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    println!(<span class="string">"Your number was: {}"</span>, *helper());
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">helper</span>(</span>) -&gt; &amp;<span class="keyword">int</span> {
+    <span class="keyword">let</span> a = <span class="number">3</span>;
+    <span class="keyword">return</span> &amp;a;
+}</code></pre>
+
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20println%21%28%22Your%20number%20was%3A%20%7B%7D%22%2C%20*helper%28%29%29%3B%0A%7D%0A%0Afn%20helper%28%29%20-%3E%20%26int%20%7B%0A%20%20%20%20let%20a%20%3D%203%3B%0A%20%20%20%20return%20%26a%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -327.5px; display: none;" class="past" hidden="">
+        <h2>Borrowing</h2>
+
+        <p>Borrows can be nested</p>
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="keyword">struct</span> MyStruct { inner: <span class="keyword">int</span> }
+
+<span class="function"><span class="keyword">fn</span> <span class="title">get</span>(</span>s: &amp;MyStruct) -&gt; &amp;<span class="keyword">int</span> {
+    &amp;s.inner
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> s = MyStruct { inner: <span class="number">3</span> };
+    <span class="keyword">let</span> inner = get(&amp;s); <span class="comment">// same lifetime as `s`</span>
+}</code></pre>
+
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Astruct%20MyStruct%20%7B%20inner%3A%20int%20%7D%0A%0Afn%20get%28s%3A%20%26MyStruct%29%20-%3E%20%26int%20%7B%0A%20%20%20%20%26s.inner%0A%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20s%20%3D%20MyStruct%20%7B%20inner%3A%203%20%7D%3B%0A%20%20%20%20let%20inner%20%3D%20get%28%26s%29%3B%20%2F%2F%20same%20lifetime%20as%20%60s%60%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -201.5px; display: none;" class="">
+        <h2>Borrowing</h2>
+
+        <p>Borrowed values can become owned values through <em>cloning</em></p>
+        <pre><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="function"><span class="keyword">fn</span> <span class="title">clone_vector</span>(</span>v: &amp;Vec&lt;<span class="keyword">int</span>&gt;) -&gt; Vec&lt;<span class="keyword">int</span>&gt; {
+    v.clone()
+}</code></pre>
+
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20clone_vector%28v%3A%20%26Vec%3Cint%3E%29%20-%3E%20Vec%3Cint%3E%20%7B%0A%20%20%20%20v.clone%28%29%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="2" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="past" style="top: -132.5px; display: none;" hidden="">
+        <h2>Memory Management</h2>
+
+        <p>
+          Rust has fine-grained memory management, but is automatically managed
+          once created.
+        </p>
+      </section>
+
+      <section style="top: -259px; display: none;" class="past" hidden="">
+        <h2>Memory Management</h2>
+        <p>
+          Each variable has a <em>scope</em> it is valid for, and it is
+          automatically deallocated when it goes out of scope.
+        </p>
+
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="comment">// `slot` is an *owned* value</span>
+    <span class="keyword">let</span> slot = box <span class="number">3i</span>;
+    <span class="comment">// The slot goes out of scope here, it is free'd</span>
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20%2F%2F%20%60slot%60%20is%20an%20*owned*%20value%0A%20%20%20%20let%20slot%20%3D%20box%203i%3B%0A%20%20%20%20%2F%2F%20The%20slot%20goes%20out%20of%20scope%20here%2C%20it%20is%20free%27d%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -333px; display: none;" class="">
+        <h2>Memory Management</h2>
+        <p>
+          Reference counting is another way of managing memory.
+        </p>
+
+        <pre><code style="font-size:120%;line-height:1.3em;" data-trim="" class="rust"><span class="keyword">use</span> std::rc::Rc;
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> data = Rc::new(<span class="number">3i</span>); <span class="comment">// reference count of 1</span>
+    {
+        <span class="keyword">let</span> data2 = data.clone(); <span class="comment">// reference count of 2</span>
+        work_with(data2); <span class="comment">// transfer ownership of `data2`</span>
+    } <span class="comment">// reference count of 1</span>
+    work_with(data); <span class="comment">// transfer ownership of `data`</span>
+} <span class="comment">// reference count of 0, memory deallocated</span>
+
+<span class="function"><span class="keyword">fn</span> <span class="title">work_with</span>(</span>data: Rc&lt;<span class="keyword">int</span>&gt;) {}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Ause%20std%3A%3Arc%3A%3ARc%3B%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20data%20%3D%20Rc%3A%3Anew%283i%29%3B%20%2F%2F%20reference%20count%20of%201%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20let%20data2%20%3D%20data.clone%28%29%3B%20%2F%2F%20reference%20count%20of%202%0A%20%20%20%20%20%20%20%20work_with%28data2%29%3B%20%2F%2F%20transfer%20ownership%20of%20%60data2%60%0A%20%20%20%20%7D%20%2F%2F%20reference%20count%20of%201%0A%20%20%20%20work_with%28data%29%3B%20%2F%2F%20transfer%20ownership%20of%20%60data%60%0A%7D%20%2F%2F%20reference%20count%20of%200%2C%20memory%20deallocated%0A%0Afn%20work_with%28data%3A%20Rc%3Cint%3E%29%20%7B%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="4" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="past" style="top: -232px; display: none;" hidden="">
+        <h2>Mutability</h2>
+
+        <p>
+          Values are <em>immutable</em> by default in Rust, and must be tagged
+          as being <em>mutable</em>.
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> a = <span class="number">4</span>;
+a = <span class="number">5</span>; <span class="comment">// error!</span></code></pre>
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="number">4</span>;
+a = <span class="number">5</span>; <span class="comment">// ok</span></code></pre>
+      </section>
+
+      <section style="top: -246.5px; display: none;" class="past" hidden="">
+        <h2>Mutability</h2>
+
+        <p>
+          Mutability is also a part of the type of a borrowed pointer.
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="function"><span class="keyword">fn</span> <span class="title">inc</span>(</span>i: &amp;<span class="keyword">int</span>) {
+    *i += <span class="number">1</span>; <span class="comment">// error!</span>
+}</code></pre>
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="function"><span class="keyword">fn</span> <span class="title">inc</span>(</span>i: &amp;<span class="keyword">mut</span> <span class="keyword">int</span>) {
+    *i += <span class="number">1</span>; <span class="comment">// ok</span>
+}</code></pre>
+      </section>
+
+      <section style="top: -180px; display: none;" class="past" hidden="">
+        <h2>Mutability</h2>
+
+        <p>
+          Borrowed pointers may coerce
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> a = &amp;<span class="keyword">mut</span> <span class="number">1</span>;
+<span class="keyword">let</span> b: &amp;<span class="keyword">int</span> = a; <span class="comment">// ok</span>
+<span class="keyword">let</span> c: &amp;<span class="keyword">mut</span> <span class="keyword">int</span> = b; <span class="comment">// error!</span></code></pre>
+      </section>
+
+      <section style="top: -234px; display: none;" class="past" hidden="">
+        <h2>Mutability</h2>
+
+        <p>
+          Values can be <em>frozen</em> by borrowing
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> <span class="keyword">mut</span> a = Vec::new();
+{
+    <span class="keyword">let</span> b = &amp;a; <span class="comment">// freezes `a`</span>
+    a.push(<span class="number">1</span>);  <span class="comment">// error!</span>
+}
+a.push(<span class="number">2</span>); <span class="comment">// ok</span></code></pre>
+      </section>
+
+      <section style="top: -345.5px; display: none;" class="">
+        <h2>Mutability</h2>
+
+        <p>
+          Mutability propagates deeply into owned types
+        </p>
+
+        <pre><code style="font-size:140%;line-height:1.3em;" data-trim="" class="rust"><span class="keyword">struct</span> A { b: B }
+<span class="keyword">struct</span> B { c: <span class="keyword">int</span> }
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> <span class="keyword">mut</span> a = A { b: B { c: <span class="number">2</span> } };
+    a.b.c = <span class="number">3</span>;
+    a.b = B { c: <span class="number">4</span> };
+    a = A { b: B { c: <span class="number">5</span> } };
+
+    <span class="keyword">let</span> frozen = a;
+    frozen.b.c = <span class="number">4</span>; <span class="comment">// error!</span>
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Astruct%20A%20%7B%20b%3A%20B%20%7D%0Astruct%20B%20%7B%20c%3A%20int%20%7D%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20mut%20a%20%3D%20A%20%7B%20b%3A%20B%20%7B%20c%3A%202%20%7D%20%7D%3B%0A%20%20%20%20a.b.c%20%3D%203%3B%0A%20%20%20%20a.b%20%3D%20B%20%7B%20c%3A%204%20%7D%3B%0A%20%20%20%20a%20%3D%20A%20%7B%20b%3A%20B%20%7B%20c%3A%205%20%7D%20%7D%3B%0A%0A%20%20%20%20let%20frozen%20%3D%20a%3B%0A%20%20%20%20frozen.b.c%20%3D%204%3B%20%2F%2F%20error%21%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="4" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="past" style="top: -111px; display: none;" hidden="">
+        <h2>Concurrency</h2>
+
+        <p>
+          Using ownership to prevent data races.
+        </p>
+      </section>
+
+      <section style="top: -234px; display: none;" class="past" hidden="">
+        <h2>Concurrency</h2>
+
+        <p>
+          Parallelism is achieved at the granularity of an OS thread.
+        </p>
+
+        <pre clas="rust"><code class="scss" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="comment">// Spawn a child thread to be run in parallel</span>
+<span class="function">spawn(<span class="function">proc()</span> {
+    <span class="function">expensive_computation()</span>;
+})</span>;
+
+<span class="function">other_expensive_computation()</span>;</code></pre>
+      </section>
+
+      <section style="top: -237.5px; display: none;" class="past" hidden="">
+        <h2>Concurrency</h2>
+
+        <p>
+          Safety is achieve by requiring that a `proc` owns captured variables.
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> <span class="keyword">mut</span> a = Vec::new();
+spawn(proc() {
+    a.push(<span class="string">"foo"</span>);
+});
+a.push(<span class="string">"bar"</span>); <span class="comment">// error!</span></code></pre>
+      </section>
+
+      <section style="top: -288px; display: none;" class="past" hidden="">
+        <h2>Concurrency</h2>
+
+        <p>
+          Threads can communicate with channels
+        </p>
+
+        <pre class="rust"><code class="rust" style="font-size:140%;line-height:1.3em;" data-trim=""><span class="keyword">let</span> (tx, rx) = channel();
+
+spawn(proc() {
+    tx.send(expensive_computation());
+});
+
+<span class="comment">// Do some work in the meantime</span>
+
+<span class="keyword">let</span> answer = rx.recv();</code></pre>
+      </section>
+
+      <section style="top: -325.5px; display: none;" class="">
+        <h2>Concurrency</h2>
+
+        <p>
+          Tasks can also share memory
+        </p>
+
+        <pre><code data-trim="" class="rust"><span class="keyword">use</span> std::collections::HashMap;
+<span class="keyword">use</span> std::sync::Arc;
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> <span class="keyword">mut</span> map = HashMap::new();
+    map.insert(<span class="string">"tomato"</span>, <span class="string">"red"</span>);
+    map.insert(<span class="string">"celery"</span>, <span class="string">"green"</span>);
+    map.insert(<span class="string">"carrot"</span>, <span class="string">"orange"</span>);
+
+    <span class="keyword">let</span> arc1 = Arc::new(map);
+    <span class="keyword">let</span> arc2 = arc1.clone();
+
+    spawn(proc() println!(<span class="string">"Celery is `{}`"</span>, arc1[<span class="string">"celery"</span>]));
+    spawn(proc() println!(<span class="string">"Carrots are `{}`"</span>, arc2[<span class="string">"carrot"</span>]));
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Ause%20std%3A%3Acollections%3A%3AHashMap%3B%0Ause%20std%3A%3Async%3A%3AArc%3B%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20mut%20map%20%3D%20HashMap%3A%3Anew%28%29%3B%0A%20%20%20%20map.insert%28%22tomato%22%2C%20%22red%22%29%3B%0A%20%20%20%20map.insert%28%22celery%22%2C%20%22green%22%29%3B%0A%20%20%20%20map.insert%28%22carrot%22%2C%20%22orange%22%29%3B%0A%0A%20%20%20%20let%20arc1%20%3D%20Arc%3A%3Anew%28map%29%3B%0A%20%20%20%20let%20arc2%20%3D%20arc1.clone%28%29%3B%0A%0A%20%20%20%20spawn%28proc%28%29%20println%21%28%22Celery%20is%20%60%7B%7D%60%22%2C%20arc1%5B%22celery%22%5D%29%29%3B%0A%20%20%20%20spawn%28proc%28%29%20println%21%28%22Carrots%20are%20%60%7B%7D%60%22%2C%20arc2%5B%22carrot%22%5D%29%29%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="4" class="stack past" style="top: 0px; display: none;" hidden="">
+      <section class="past" style="top: -261px; display: none;" hidden="">
+        <h2>Other Goodies - Structs</h2>
+
+        <pre><code data-trim="" class="rust" style="font-size:150%;line-height:1.2em"><span class="keyword">struct</span> Point {
+    x: <span class="keyword">int</span>,
+    y: <span class="keyword">int</span>,
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> p = Point { x: <span class="number">1</span>, y: <span class="number">2</span> };
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Astruct%20Point%20%7B%0A%20%20%20%20x%3A%20int%2C%0A%20%20%20%20y%3A%20int%2C%0A%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20p%20%3D%20Point%20%7B%20x%3A%201%2C%20y%3A%202%20%7D%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -189.5px; display: none;" class="past" hidden="">
+        <h2>Other Goodies - Tuples</h2>
+
+        <pre><code data-trim="" class="rust" style="font-size:150%;line-height:1.2em"><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> pair = (<span class="number">2i</span>, <span class="number">3i</span>);
+    <span class="keyword">let</span> (first, second) = pair;
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20pair%20%3D%20%282i%2C%203i%29%3B%0A%20%20%20%20let%20%28first%2C%20second%29%20%3D%20pair%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -314.5px; display: none;" class="past" hidden="">
+        <h2>Other Goodies - Enums</h2>
+
+        <pre><code data-trim="" class="rust" style="font-size:150%;line-height:1.2em"><span class="keyword">enum</span> <span class="title">Shape</span> {
+    Circle,
+    Square
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">test</span>(</span>shape: Shape) {
+    <span class="keyword">match</span> shape {
+        Circle =&gt; { <span class="comment">/* ... */</span> }
+        Square =&gt; { <span class="comment">/* ... */</span> }
+    }
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Aenum%20Shape%20%7B%0A%20%20%20%20Circle%2C%0A%20%20%20%20Square%0A%7D%0A%0Afn%20test%28shape%3A%20Shape%29%20%7B%0A%20%20%20%20match%20shape%20%7B%0A%20%20%20%20%20%20%20%20Circle%20%3D%3E%20%7B%20%2F*%20...%20*%2F%20%7D%0A%20%20%20%20%20%20%20%20Square%20%3D%3E%20%7B%20%2F*%20...%20*%2F%20%7D%0A%20%20%20%20%7D%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -296.5px; display: none;" class="past" hidden="">
+        <h2>Other Goodies - Enums with data</h2>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">enum</span> <span class="title">Shape</span> {
+    Circle(Point, <span class="keyword">f64</span>),
+    Rectangle(Point, Point),
+}
+
+<span class="keyword">match</span> shape {
+    Circle(center, radius) =&gt; {
+        draw_circle(center, radius)
+    }
+    Rectangle(ul, lr) =&gt; {
+        draw_rectangle(ul, lr)
+    }
+}</code></pre>
+      </section>
+
+      <section style="top: -174px; display: none;" class="">
+        <h2>Other goodies - &amp; pointers</h2>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">let</span> a: &amp;<span class="keyword">int</span> = ...;         <span class="comment">// never null!</span>
+<span class="keyword">let</span> b: Option&lt;&amp;<span class="keyword">int</span>&gt; = ...; <span class="comment">// may be null</span>
+
+<span class="comment">// represented as a null pointer</span>
+<span class="keyword">let</span> c: Option&lt;&amp;<span class="keyword">int</span>&gt; = None;</code></pre>
+      </section>
+
+      <section style="top: -187.5px; display: none;" class="future" hidden="">
+        <h2>Other goodies - &amp;mut pointers</h2>
+
+        <p>
+          Any &amp;mut pointer is the <em>only</em> pointer to its data
+        </p>
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="number">1</span>;
+
+<span class="keyword">let</span> b = &amp;<span class="keyword">mut</span> a; <span class="comment">// ok</span>
+<span class="keyword">let</span> c = &amp;<span class="keyword">mut</span> a; <span class="comment">// error!</span></code></pre>
+      </section>
+
+      <section style="top: -174px; display: none;" class="future" hidden="">
+        <h2>Other goodies - Traits</h2>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">trait</span> <span class="title">Clone</span> {
+    <span class="comment">// borrows the receiver,</span>
+    <span class="comment">// returning the same type (Self)</span>
+    <span class="function"><span class="keyword">fn</span> <span class="title">clone</span>(</span>&amp;<span class="keyword">self</span>) -&gt; Self;
+}</code></pre>
+      </section>
+
+      <section style="top: -174px; display: none;" class="future" hidden="">
+        <h2>Other goodies - Trait Impls</h2>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">impl</span> Clone <span class="keyword">for</span> Point {
+    <span class="function"><span class="keyword">fn</span> <span class="title">clone</span>(</span>&amp;<span class="keyword">self</span>) -&gt; Point {
+        Point { x: self.x, y: self.y }
+    }
+}</code></pre>
+      </section>
+
+      <section style="top: -20px; display: none;" class="future" hidden="">
+        <h2>Other goodies - Traits in Generics</h2>
+
+        <pre><code data-trim="" class="rust" style="font-size:130%;line-height:1.2em"><span class="function"><span class="keyword">fn</span> <span class="title">clone_vector</span>&lt;</span>T: Clone&gt;(v: &amp;Vec&lt;T&gt;) {
+    <span class="keyword">let</span> <span class="keyword">mut</span> other = Vec::new();
+    <span class="keyword">for</span> element in v.iter() {
+        other.push(element.clone());
+    }
+    <span class="keyword">return</span> other;
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20clone_vector%3CT%3A%20Clone%3E%28v%3A%20%26Vec%3CT%3E%29%20%7B%0A%20%20%20%20let%20mut%20other%20%3D%20Vec%3A%3Anew%28%29%3B%0A%20%20%20%20for%20element%20in%20v.iter%28%29%20%7B%0A%20%20%20%20%20%20%20%20other.push%28element.clone%28%29%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20other%3B%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+    </section>
+
+    <section data-previous-indexv="4" class="stack past" style="top: 0px; display: block;" hidden="">
+      <section class="past" style="top: -84px; display: none;" hidden="">
+        <h2>Breaking the Rules</h2>
+      </section>
+
+      <section style="top: -303.5px; display: none;" class="past" hidden="">
+        <h2>Unsafe blocks</h2>
+
+        <pre><code data-trim="" class="rust" style="font-size:130%;line-height:1.2em"><span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> a = <span class="number">3</span>;
+
+    <span class="comment">// Turn off some compiler checks,</span>
+    <span class="comment">// "I know what I'm doing"</span>
+    <span class="keyword">unsafe</span> {
+        <span class="keyword">let</span> b = &amp;a as *<span class="keyword">const</span> <span class="keyword">int</span> as *<span class="keyword">mut</span> <span class="keyword">int</span>;
+        *b = <span class="number">4</span>;
+    }
+
+    println!(<span class="string">"{}"</span>, a); <span class="comment">// prints 4</span>
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20a%20%3D%203%3B%0A%0A%20%20%20%20%2F%2F%20Turn%20off%20some%20compiler%20checks%2C%0A%20%20%20%20%2F%2F%20%22I%20know%20what%20I%27m%20doing%22%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20let%20b%20%3D%20%26a%20as%20*const%20int%20as%20*mut%20int%3B%0A%20%20%20%20%20%20%20%20*b%20%3D%204%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20println%21%28%22%7B%7D%22%2C%20a%29%3B%20%2F%2F%20prints%204%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -202px; display: none;" class="past" hidden="">
+        <h2>Transmuting</h2>
+
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="keyword">unsafe</span> <span class="function"><span class="keyword">fn</span> <span class="title">transmute</span>&lt;</span>T, U&gt;(t: T) -&gt; U {
+    <span class="comment">/* ... */</span>
+}</code></pre>
+        <pre class="rust"><code class="rust" data-trim="" style="font-size:130%;line-height:1.2em"><span class="comment">// Invalid promotion to a mutable pointer</span>
+<span class="keyword">let</span> a: &amp;<span class="keyword">int</span> = &amp;<span class="number">3</span>;
+<span class="keyword">let</span> b: &amp;<span class="keyword">mut</span> <span class="keyword">int</span> = <span class="keyword">unsafe</span> { transmute(a) };</code></pre>
+      </section>
+
+      <section style="top: -323.5px; display: none;" class="past" hidden="">
+        <h2>FFI</h2>
+
+        <p><em>All</em> FFI is unsafe</p>
+        <pre><code data-trim="" class="rust" style="font-size:130%;line-height:1.2em"><span class="keyword">extern</span> {
+    <span class="function"><span class="keyword">fn</span> <span class="title">write</span>(</span>fd: <span class="keyword">i32</span>, data: *<span class="keyword">const</span> <span class="keyword">u8</span>, len: <span class="keyword">uint</span>) -&gt; <span class="keyword">int</span>;
+}
+
+<span class="function"><span class="keyword">fn</span> <span class="title">main</span>(</span>) {
+    <span class="keyword">let</span> data = b<span class="string">"Hello, world!\n"</span>;
+
+    <span class="keyword">unsafe</span> {
+        write(<span class="number">1</span>, &amp;data[<span class="number">0</span>], data.len());
+    }
+}</code></pre>
+      <a target="_blank" href="http://play.rust-lang.org/?run=1&amp;code=%23%21%5Ballow%28warnings%29%5D%0A%0Aextern%20%7B%0A%20%20%20%20fn%20write%28fd%3A%20i32%2C%20data%3A%20*const%20u8%2C%20len%3A%20uint%29%20-%3E%20int%3B%0A%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20data%20%3D%20b%22Hello%2C%20world%21%5Cn%22%3B%0A%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20write%281%2C%20%26data%5B0%5D%2C%20data.len%28%29%29%3B%0A%20%20%20%20%7D%0A%7D%0A%20%20%20%20%20%20%20%20">[playpen]</a></section>
+
+      <section style="top: -189.5px; display: block;" class="">
+        <h2><em>Fast</em>&nbsp;&nbsp;FFI</h2>
+
+        <pre><code data-trim="" class="asm mel" style="font-size:130%;line-height:1.2em">main:
+  ...
+  xorl    <span class="variable">%edi</span>, <span class="variable">%edi</span>
+  leaq    _str1365(<span class="variable">%rip</span>), <span class="variable">%rsi</span>
+  movl    <span class="variable">$0</span>xd, <span class="variable">%edx</span>
+  callq   <span class="number">0x100000eb2</span> ## symbol stub <span class="keyword">for</span>: _write</code></pre>
+      </section>
+    </section>
+
+    <section data-previous-indexv="0" class="stack past" style="top: 0px; display: block;" hidden="">
+      <section class="" style="top: -84px; display: block;">
+        <h2>Should you use Rust?</h2>
+      </section>
+
+      <section style="top: -84px; display: block;" class="future" hidden="">
+        <h2>Yes!</h2>
+      </section>
+
+      <section style="top: -149px; display: none;" class="future" hidden="">
+        <h2>What Rust is good at</h2>
+
+        <ul>
+          <li>Large scale maintainable systems</li>
+          <li>Embedding into other languages</li>
+          <li><em>Fast</em>, <em>correct</em> code</li>
+        </ul>
+      </section>
+    </section>
+
+    <section data-previous-indexv="0" class="stack past" style="top: 0px; display: block;" hidden="">
+      <section class="" style="top: -84px; display: block;">
+        <h2>Should you use Rust <em>now</em>&nbsp;?</h2>
+      </section>
+
+      <section style="top: -84px; display: block;" class="future" hidden="">
+        <h2>Maybe</h2>
+      </section>
+
+
+      <section style="top: -132.5px; display: block;" class="future" hidden="">
+        <h2>Rust is not yet 1.0</h2>
+
+        <p>
+          Libraries and language features will continue to change in a
+          non-backwards-compatible fashion before 1.0
+        </p>
+      </section>
+
+      <section style="top: -132.5px; display: none;" class="future" hidden="">
+        <h2>Rust is, however, fun!</h2>
+
+        <p>
+          The language is in a great shape right now for writing real-world
+          applications (i.e. a web browser)
+        </p>
+      </section>
+    </section>
+
+    <section class="present" style="top: -126.5px; display: block;">
+      <ul>
+        <li><a href="http://github.com/rust-lang/rust">github.com/rust-lang/rust</a></li>
+        <li><a href="http://www.rust-lang.org/">rust-lang.org</a></li>
+        <li><a href="http://reddit.com/r/rust">reddit.com/r/rust</a></li>
+        <li><a href="http://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">#rust
+        IRC channel</a></li>
+      </ul>
+    </section>
+  </div>
+
+<div class="backgrounds"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background past"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background past"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background past"><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background past"></div><div class="slide-background present"></div></div><div class="slide-background past"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background past"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="slide-background present"></div></div><div style="display: block;" class="progress"><span style="width: 1366px;"></span></div><aside style="display: block;" class="controls"><div class="navigate-left enabled"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="state-background"></div><div class="pause-overlay"></div></div>
+
+<script src="Rust_files/head.js"></script>
+<script src="Rust_files/reveal.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+// Parallax scrolling
+// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+// parallaxBackgroundSize: '2100px 900px',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+
+</script><script src="Rust_files/highlight.js" type="text/javascript"></script><script src="Rust_files/zoom.js" type="text/javascript"></script><script src="Rust_files/notes.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var arr = document.querySelectorAll('pre > code');
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].className != "rust") { continue; }
+        var el = document.createElement('a');
+        el.href = 'http://play.rust-lang.org/?run=1&code=' +
+            encodeURIComponent("#![allow(warnings)]\n" + arr[i].textContent);
+        el.target = '_blank';
+        el.innerHTML = "[playpen]";
+        arr[i].parentElement.parentElement.appendChild(el);
+    }
+</script>
+
+
+
+</body></html>
